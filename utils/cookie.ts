@@ -15,6 +15,7 @@ export function getCookie(name:string) {
     for (let i = 0; i < cookies.length; i++) {
       const cookie = cookies[i].trim();
       if (cookie.startsWith(name + '=')) {
+        console.log(cookie.substring(name.length + 1))
         return cookie.substring(name.length + 1);
       }
     }
