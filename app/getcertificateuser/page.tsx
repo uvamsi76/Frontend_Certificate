@@ -2,9 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import {getCookie} from "../../utils/cookie"
 import axios from 'axios'
+import Button from '@/components/Button'
+import Link from 'next/link'
 const index = () => {
   console.log("index")
-  const [user,setUser]=useState<String>()
+  const [user,setUser]=useState<string>()
+  const [hash,setHash]=useState<string>()
   const handlegetcert =async ()=>{
     const token=getCookie("token")
     const apiurl ="http://ec2-16-171-225-150.eu-north-1.compute.amazonaws.com:3000/api/generatecerificate"
@@ -27,15 +30,17 @@ const index = () => {
     if(!data.certificate && data.firstname){
       console.log("error")
     }
-    const u=JSON.stringify(data.certificate)
+    const u=JSON.stringify(data.hash)
     console.log(u)
     setUser(u)
+    setHash(data.hash)
 }
-  useEffect(()=>{},[])
+if(!user){
+  return<div><Button ButtonText='Get Certificate' onClick={()=>handlegetcert()}/></div>
+}
   return (
     <div>
-      <button onClick={()=>handlegetcert()}>get certificate</button>
-      <a>{user}</a>
+      {hash}
     </div>
   )
 }
