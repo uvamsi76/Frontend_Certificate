@@ -10,8 +10,8 @@ const index = () => {
   const [hash,setHash]=useState<string>()
   const handlegetcert =async ()=>{
     const token=getCookie("token")
-    const apiurl ="http://ec2-16-171-225-150.eu-north-1.compute.amazonaws.com:3000/api/generatecerificate"
-    // const apiurl ="http://localhost:3000/api/generatecerificate"
+    // const apiurl ="http://ec2-16-171-225-150.eu-north-1.compute.amazonaws.com:3000/api/generatecerificate"
+    const apiurl ="http://localhost:3000/api/generatecerificate"
     const config = {
       headers: {
         'Authorization': 'Bearer '+token,
